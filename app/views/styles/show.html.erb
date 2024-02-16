@@ -1,9 +1,30 @@
-<section class="style-details">
-  <div class="details">
-    <h1><%= @style.name %></h1>
-    <br>
-    <h3>
-      <%= @style.bjcp_category %>
-    </h3>
+<section class="style-details pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h1 class="card-title"><%= @style.name %></h1>
+            <h3 class="card-subtitle mb-2 text-muted"><%= @style.bjcp_category %></h3>
+
+            <div class="mb-3">
+              <% if @style.fermentation_type.present? %>
+                <span class="badge bg-success"><%= @style.fermentation_type %></span>
+              <% end %>
+              <% if @style.country.present? %>
+                <span class="badge bg-primary"><%= @style.country %></span>
+              <% end %>
+            </div>
+
+            <hr>
+            <%= style_description(@style) %>
+          </div>
+          <div class="card-footer text-muted d-flex justify-content-between">
+            <%= link_to 'Back to Styles', styles_path, class: "btn btn-outline-secondary" %>
+            <%= link_to "Edit", edit_style_path(@style), class: "btn btn-outline-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
