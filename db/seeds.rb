@@ -159,8 +159,6 @@ bjcp_styles = [
   { name: "Experimental Beer", bjcp_category: "34C" }
 ]
 
-
-
 bjcp_styles.each do |style|
   Style.create!(name: style[:name], bjcp_category: style[:bjcp_category])
 end

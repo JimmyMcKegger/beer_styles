@@ -1,12 +1,12 @@
 <div>
-  <h1>
-    Beer Styles
-  </h1>
   <ul>
     <% @styles.each do |style| %>
       <li>
-        <%= style %>
+        <strong><%= style.name %></strong> - <%= style.bjcp_category %>
       </li>
+      <p>
+        <%= truncate(style.description, length: 35, seperator: ' ')%>
+      </p>
     <% end %>
   </ul>
 </div>
