@@ -1,12 +1,20 @@
-<div>
-  <ul>
+<div class="container mt-4">
+  <br>
+  <div class="row">
     <% @styles.each do |style| %>
-      <li>
-        <strong><%= style.name %></strong> - <%= style.bjcp_category %>
-      </li>
-      <p>
-        <%= truncate(style.description, length: 35, seperator: ' ')%>
-      </p>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= style.name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= style.bjcp_category %></h6>
+            <p class="card-text"><%= truncate(style.description, length: 100, separator: ' ') %></p>
+          </div>
+          <div class="card-footer d-flex justify-content-center">
+            <%= link_to 'View Style', style_path(style), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
+
 </div>
