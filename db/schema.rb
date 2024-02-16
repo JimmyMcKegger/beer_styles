@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_16_003850) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_16_004951) do
   create_table "styles", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_16_003850) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bjcp_category"
   end
 
 end
