@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+
+  before_action :require_signin, except: %i[new create]
+  before_action :require_correct_user, only: %i[edit update delete]
+  before_action :require_admin, only: %i[index]
+
   def index
     @users = User.all
   end
