@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class StylesController < ApplicationController
+
+  before_action :require_signin
+  before_action :require_admin, only: %i[new create edit update destroy]
+
   def index
     @styles = Style.all
   end

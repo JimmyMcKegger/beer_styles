@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-
   before_action :require_signin, except: %i[new create]
-  before_action :require_correct_user, only: %i[edit update delete]
+  before_action :require_correct_user_or_admin, only: %i[edit update delete]
   before_action :require_admin, only: %i[index]
 
   def index
@@ -60,5 +59,12 @@ class UsersController < ApplicationController
   def require_correct_user
     @user = User.find(params[:id])
     redirect_to root_path unless current_user?(@user)
+  end
+
+  def require_correct_user_or_admin
+    @user = User.find(params[:id])
+    unless current_user?(@user) || current_user.admin?
+      redirect_to root_url, alert: "You do not have permission to edit or delete this user."
+    end
   end
 end
