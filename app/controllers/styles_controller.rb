@@ -47,9 +47,12 @@ class StylesController < ApplicationController
 
   def update
     @style = Style.find(params[:id])
-    @style.update(style_params)
-
-    redirect_to @style
+    if @style.update(style_params)
+      flash[:notice] = "Style updated successfully"
+      redirect_to @style
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
