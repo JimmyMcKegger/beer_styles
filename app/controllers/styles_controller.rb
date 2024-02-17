@@ -52,7 +52,9 @@ class StylesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @like = current_user.liked_styles.find_by(slug: params[:id])
+  end
 
   def edit; end
 

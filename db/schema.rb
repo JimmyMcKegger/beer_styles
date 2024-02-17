@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_17_151759) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_17_234227) do
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "style_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["style_id"], name: "index_likes_on_style_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "styles", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -20,6 +36,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_151759) do
     t.datetime "updated_at", null: false
     t.string "bjcp_category"
     t.string "slug"
+    t.text "overall_impression"
+    t.text "aroma"
+    t.text "appearance"
+    t.text "flavor"
+    t.text "mouthfeel"
+    t.text "history"
+    t.text "comments"
+    t.text "vital_statistics"
+    t.text "commercial_examples"
+    t.text "tags"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_styles_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,4 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_151759) do
     t.boolean "admin", default: false
   end
 
+  add_foreign_key "likes", "styles"
+  add_foreign_key "likes", "users"
+  add_foreign_key "styles", "categories"
 end

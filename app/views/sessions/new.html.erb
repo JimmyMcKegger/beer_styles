@@ -1,13 +1,30 @@
-<h1>Sign In</h1>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="h3 mb-0">Sign In</h1>
+        </div>
+        <div class="card-body">
+          <%= form_with(url: session_path, local: true, class: "needs-validation", novalidate: "") do |f| %>
 
-<%= form_with(url: session_path) do |f| %>
+            <div class="mb-3">
+              <%= f.label :email, class: "form-label" %>
+              <%= f.email_field :email, autofocus: true, class: "form-control", required: true %>
+            </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, autofocus: true %>
+            <div class="mb-3">
+              <%= f.label :password, class: "form-label" %>
+              <%= f.password_field :password, class: "form-control", required: true %>
+            </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+            <div class="d-grid gap-2">
+              <%= f.submit "Sign In", class: "btn btn-primary" %>
+            </div>
 
-  <%= f.submit "Sign In" %>
-
-<% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,16 +17,22 @@
                   <span class="badge bg-success"><%= @style.fermentation_type %></span>
                 <% end %>
               <% end %>
+              <% if @style.country.present? %>
+                <span class="badge bg-info"><%= @style.country %></span>
+              <% end %>
             </div>
 
             <hr>
             <%= style_description(@style) %>
           </div>
           <div class="card-footer text-muted d-flex justify-content-between">
-            <%= link_to 'Back to Styles', styles_path, class: "btn btn-outline-secondary" %>
+            <%= link_to 'Back to Styles', styles_path, class: "btn btn-secondary" %>
+            <% if current_user %>
+              <%= like_or_unlike(@style, @like) %>
+            <% end %>
             <% if current_user_admin? %>
-              <%= link_to "Edit", edit_style_path(@style), class: "btn btn-outline-secondary" %>
-              <%= link_to "Delete", @style, class: "btn btn-outline-secondary", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              <%= link_to "Edit", edit_style_path(@style), class: "btn btn-warning" %>
+              <%= link_to "Delete", @style, class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             <% end %>
           </div>
         </div>

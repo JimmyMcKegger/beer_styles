@@ -1,7 +1,11 @@
-
-<div>
-  <h1 class="mt-5 mb-3">Welcome to 🍺 Styles</h1>
-  <p class="lead">Explore the world of beers and their unique styles.</p>
-  <br>
-  <%= image_tag("beer_logo.webp")%>
+<div class="container mt-5 landing-background">
+  <div class="row align-items-center">
+    <div class="col-md-6 text-center text-md-left">
+      <h1>Welcome to 🍺 Styles</h1>
+      <p class="lead">Explore the world of beers and their unique styles.</p>
+    </div>
+    <div class="col-md-6 d-flex justify-content-center">
+      <%= image_tag("beer_logo.webp", class: "img-fluid", alt: "Beer Logo") %>
+    </div>
+  </div>
 </div>

@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class Style < ApplicationRecord
+  # relationships
+  belongs_to :category
+  has_many :likes, dependent: :destroy
+  has_many :fans, through: :likes, source: :user
 
-  # Callbacks
+  # callbacks
   before_save :set_slug
 
   # validations
@@ -44,7 +48,7 @@ class Style < ApplicationRecord
   end
 
   def self.uncategorised
-    where(bjcp_category: nil).or(self.where(country: nil)).or(self.where(description: nil)).or(self.where(description: ""))
+    where(bjcp_category: nil).or(where(country: nil)).or(where(description: nil)).or(where(description: ''))
   end
 
   private
@@ -52,5 +56,4 @@ class Style < ApplicationRecord
   def set_slug
     self.slug = name.parameterize
   end
-
 end

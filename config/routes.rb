@@ -3,7 +3,10 @@
 Rails.application.routes.draw do
   root 'application#welcome'
 
+  resources :categories
+
   resources :styles do
+    resources :likes
     collection do
       get :american
       get :german
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
 
   resource :session, only: %i[new create destroy]
 
-  resources :users
   get 'signup', to: 'users#new'
+
+  resources :users
 end

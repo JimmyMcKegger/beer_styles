@@ -13,12 +13,22 @@
  */
  @import "bootstrap";
 
+.landing-background {
+  background-color: #f0f0f0;
+  background-size: cover;
+  padding: 20px 0;
+}
+
  .badge-ale {
-  background-color: #f4a460; /* An amber color */
-  color: white; /* Adjust text color as needed */
+  background-color: #f4a460;
+  color: white;
 }
 
 .badge-lager {
-  background-color: #ffdfba; /* A light straw color */
-  color: black; /* Adjust text color as needed */
+  background-color: #ffdfba;
+  color: rgb(50, 49, 49);
+}
+.sidebar-custom {
+  margin-left: auto;
+  padding-left: 80px;
 }

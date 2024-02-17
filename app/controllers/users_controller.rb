@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @liked_styles = @user.liked_styles
   end
 
   def new
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user, notice: 'Account updated!'
+      redirect_to @user, notice: 'Account saved!'
     else
       render :edit, status: :unprocessable_entity
     end

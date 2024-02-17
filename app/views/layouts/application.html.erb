@@ -10,23 +10,23 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="d-flex flex-column min-vh-100">
-
+ <body class="d-flex flex-column min-vh-100">
   <%= render "layouts/header" %>
-
   <%= render "layouts/flash" %>
 
+  <% if controller_name == 'application' && action_name == 'welcome' %>
+    <%= yield %>
+  <% else %>
+    <div class="container">
       <div class="row">
         <div class="col-md-8">
           <%= yield %>
         </div>
         <div class="col-md-4">
-          <!-- Placeholder for search -->
         </div>
       </div>
     </div>
+    <% end %>
+    <%= render "layouts/footer" %>
   </body>
-
-  <%= render "layouts/footer" %>
-
 </html>
