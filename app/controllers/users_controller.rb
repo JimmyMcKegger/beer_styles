@@ -63,8 +63,8 @@ class UsersController < ApplicationController
 
   def require_correct_user_or_admin
     @user = User.find(params[:id])
-    unless current_user?(@user) || current_user.admin?
-      redirect_to root_url, alert: "You do not have permission to edit or delete this user."
-    end
+    return if current_user?(@user) || current_user.admin?
+
+    redirect_to root_url, alert: 'You do not have permission to edit or delete this user.'
   end
 end
