@@ -3,6 +3,27 @@ class StylesController < ApplicationController
     @styles = Style.all
   end
 
+
+  def american
+    @styles = Style.american
+    render :index
+  end
+
+  def german
+    @styles = Style.german
+    render :index
+  end
+
+  def british
+    @styles = Style.british
+    render :index
+  end
+
+  def belgian
+    @styles = Style.belgian
+    render :index
+  end
+
   def new
     @style = Style.new
   end
