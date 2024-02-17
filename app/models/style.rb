@@ -4,6 +4,16 @@ class Style < ApplicationRecord
     "#{name} - #{bjcp_category}"
   end
 
+  # validations
+
+  validates :name, presence: true
+
+  validates :description, length: { minimum: 25 }
+
+
+
+  # associations
+
   def self.american
     where(country: "U.S.A.")
   end

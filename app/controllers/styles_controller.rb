@@ -30,9 +30,11 @@ class StylesController < ApplicationController
 
   def create
     @style = Style.new(style_params)
-    @style.save
-
-    redirect_to @style
+    if @style.save
+      redirect_to @style
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show

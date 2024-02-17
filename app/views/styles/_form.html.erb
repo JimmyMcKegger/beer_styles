@@ -1,4 +1,7 @@
 <%= form_with(model: style, class: 'needs-validation', novalidate: true) do |f| %>
+
+  <%= render "shared/errors", object: style %>
+
   <div class="mb-3">
     <%= f.label :name, class: 'form-label' %>
     <%= f.text_field :name, class: 'form-control', autofocus: true %>

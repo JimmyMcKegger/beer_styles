@@ -1,0 +1,11 @@
+<% if object.errors.any? %>
+  <section class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Form could not be saved.</h4>
+    <p>Please correct the following errors:</p>
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
