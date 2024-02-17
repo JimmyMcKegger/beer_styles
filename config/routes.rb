@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :session, only: %i[new create destroy]
+
   resources :users
   get 'signup', to: 'users#new'
 end

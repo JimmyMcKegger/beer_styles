@@ -38,10 +38,12 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    # session[:user_id] = nil
-    redirect_to root_path, status: :see_other,
-                            alterts: 'Account succesfully deleted'
+    if @user.destroy
+      session[:user_id] = nil
+      redirect_to root_path, status: :see_other, alert: 'Account successfully deleted'
+    else
+      redirect_to @user, status: :unprocessable_entity, alert: @user.errors.full_messages.join(', ')
+    end
   end
 
   private
