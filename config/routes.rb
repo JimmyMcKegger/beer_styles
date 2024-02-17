@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :users
   root 'application#welcome'
 
   resources :styles do
@@ -12,4 +11,7 @@ Rails.application.routes.draw do
       get :belgian
     end
   end
+
+  resources :users
+  get 'signup', to: 'users#new'
 end
