@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root "application#welcome"
+  root 'application#welcome'
 
   resources :styles do
     collection do
@@ -8,5 +10,5 @@ Rails.application.routes.draw do
       get :british
       get :belgian
     end
-end
+  end
 end

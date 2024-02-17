@@ -1,5 +1,6 @@
-class Style < ApplicationRecord
+# frozen_string_literal: true
 
+class Style < ApplicationRecord
   def to_s
     "#{name} - #{bjcp_category}"
   end
@@ -10,23 +11,21 @@ class Style < ApplicationRecord
 
   validates :description, length: { minimum: 25 }
 
-
-
   # associations
 
   def self.american
-    where(country: "U.S.A.")
+    where(country: 'U.S.A.')
   end
 
   def self.german
-    where(country: "Germany")
+    where(country: 'Germany')
   end
 
   def self.british
-    where(country: "U.K.")
+    where(country: 'U.K.')
   end
 
   def self.belgian
-    where(country: "Belgium")
+    where(country: 'Belgium')
   end
 end

@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class StylesController < ApplicationController
   def index
     @styles = Style.all
   end
-
 
   def american
     @styles = Style.american
@@ -48,7 +49,7 @@ class StylesController < ApplicationController
   def update
     @style = Style.find(params[:id])
     if @style.update(style_params)
-      flash[:notice] = "Style updated successfully"
+      flash[:notice] = 'Style updated successfully'
       redirect_to @style
     else
       render :edit, status: :unprocessable_entity
@@ -67,5 +68,4 @@ class StylesController < ApplicationController
   def style_params
     params.require(:style).permit(:name, :description, :fermentation_type, :country)
   end
-
 end
