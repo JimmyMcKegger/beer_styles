@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,23 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_240_217_141_713) do
-  create_table 'styles', force: :cascade do |t|
-    t.string 'name'
-    t.string 'description'
-    t.string 'fermentation_type'
-    t.string 'country'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'bjcp_category'
+ActiveRecord::Schema[7.0].define(version: 2024_02_17_151759) do
+  create_table "styles", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "fermentation_type"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "bjcp_category"
+    t.string "slug"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'email'
-    t.string 'password_digest'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.boolean 'admin', default: false
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
   end
+
 end

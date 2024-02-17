@@ -9,10 +9,13 @@
 
             <div class="mb-3">
               <% if @style.fermentation_type.present? %>
-                <span class="badge bg-success"><%= @style.fermentation_type %></span>
-              <% end %>
-              <% if @style.country.present? %>
-                <span class="badge bg-primary"><%= @style.country %></span>
+                <% if @style.fermentation_type == "Ale" %>
+                  <span class="badge badge-ale"><%= @style.fermentation_type %></span>
+                <% elsif @style.fermentation_type == "Lager" %>
+                  <span class="badge badge-lager"><%= @style.fermentation_type %></span>
+                <% else %>
+                  <span class="badge bg-success"><%= @style.fermentation_type %></span>
+                <% end %>
               <% end %>
             </div>
 
@@ -21,8 +24,10 @@
           </div>
           <div class="card-footer text-muted d-flex justify-content-between">
             <%= link_to 'Back to Styles', styles_path, class: "btn btn-outline-secondary" %>
-            <%= link_to "Edit", edit_style_path(@style), class: "btn btn-outline-secondary" %>
-            <%= link_to "Delete", @style, class: "btn btn-outline-secondary", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% if current_user_admin? %>
+              <%= link_to "Edit", edit_style_path(@style), class: "btn btn-outline-secondary" %>
+              <%= link_to "Delete", @style, class: "btn btn-outline-secondary", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% end %>
           </div>
         </div>
       </div>

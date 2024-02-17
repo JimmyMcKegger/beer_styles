@@ -3,6 +3,7 @@
 class StylesController < ApplicationController
   before_action :require_signin
   before_action :require_admin, only: %i[new create edit update destroy]
+  before_action :set_style, only: %i[show edit update destroy]
 
   def index
     @styles = Style.all
@@ -51,16 +52,11 @@ class StylesController < ApplicationController
     end
   end
 
-  def show
-    @style = Style.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @style = Style.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @style = Style.find(params[:id])
     if @style.update(style_params)
       flash[:notice] = 'Style updated successfully'
       redirect_to @style
@@ -70,13 +66,16 @@ class StylesController < ApplicationController
   end
 
   def destroy
-    @style = Style.find(params[:id])
     @style.destroy
 
     redirect_to styles_url, status: :see_other
   end
 
   private
+
+  def set_style
+    @style = Style.find_by!(slug: params[:id])
+  end
 
   def style_params
     params.require(:style).permit(:name, :description, :fermentation_type, :country)
