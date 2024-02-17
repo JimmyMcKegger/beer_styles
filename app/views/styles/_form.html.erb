@@ -5,6 +5,11 @@
   </div>
 
   <div class="mb-3">
+    <%= f.label :bjcp_category, "BJCP Category", class: 'form-label' %>
+    <%= f.text_field :bjcp_category, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
     <%= f.label :description, class: 'form-label' %>
     <%= f.text_area :description, class: 'form-control', rows: 3 %>
   </div>
