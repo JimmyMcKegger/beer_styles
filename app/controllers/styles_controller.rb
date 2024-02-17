@@ -28,6 +28,16 @@ class StylesController < ApplicationController
     render :index
   end
 
+  def historical
+    @styles = Style.historical
+    render :index
+  end
+
+  def uncategorised
+    @styles = Style.uncategorised
+    render :index
+  end
+
   def new
     @style = Style.new
   end

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       get :german
       get :british
       get :belgian
+      get :historical
+      get :uncategorised
     end
   end
 

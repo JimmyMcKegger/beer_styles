@@ -28,4 +28,13 @@ class Style < ApplicationRecord
   def self.belgian
     where(country: 'Belgium')
   end
+
+  def self.historical
+    where bjcp_category: 'Historical'
+  end
+
+  def self.uncategorised
+    where(bjcp_category: nil).or(self.where(country: nil)).or(self.where(description: nil)).or(self.where(description: ""))
+  end
+
 end
