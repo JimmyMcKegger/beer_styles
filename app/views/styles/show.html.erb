@@ -22,6 +22,7 @@
           <div class="card-footer text-muted d-flex justify-content-between">
             <%= link_to 'Back to Styles', styles_path, class: "btn btn-outline-secondary" %>
             <%= link_to "Edit", edit_style_path(@style), class: "btn btn-outline-secondary" %>
+            <%= link_to "Delete", @style, class: "btn btn-outline-secondary", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           </div>
         </div>
       </div>

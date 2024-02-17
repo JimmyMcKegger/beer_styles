@@ -29,6 +29,13 @@ class StylesController < ApplicationController
     redirect_to @style
   end
 
+  def destroy
+    @style = Style.find(params[:id])
+    @style.destroy
+
+    redirect_to styles_url, status: :see_other
+  end
+
   private
 
   def style_params
