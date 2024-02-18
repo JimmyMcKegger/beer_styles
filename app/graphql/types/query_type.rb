@@ -18,14 +18,22 @@ module Types
       ids.map { |id| context.schema.object_from_id(id, context) }
     end
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :category, Types::CategoryType, null: true do
+      description "Find a category by ID"
+      argument :id, ID, required: true
+    end
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def category(id:)
+      Category.where(id: id).first
+    end
+
+    field :style, Types::StyleType, null: true do
+      description "Find a style by ID"
+      argument :id, ID, required: true
+    end
+
+    def style(id:)
+      Style.where(id: id).first
     end
   end
 end
