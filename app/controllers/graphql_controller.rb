@@ -20,10 +20,11 @@ class GraphqlController < ApplicationController
       api_client_session_id: api_client_session&.id,
       time: Time.now
     }
-    result = BeersSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = BeersSchema.execute(query, variables:, context:, operation_name:)
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?
+
     handle_error_in_development(e)
   end
 

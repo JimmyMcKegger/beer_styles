@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   before_action :require_signin
   before_action :require_admin, only: %i[new create edit update destroy]
@@ -10,5 +12,4 @@ class CategoriesController < ApplicationController
     @category = Category.find_by!(params[:id])
     @styles = @category.styles
   end
-
 end

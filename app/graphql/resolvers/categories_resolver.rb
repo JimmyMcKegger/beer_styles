@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Resolvers
   class CategoriesResolver < BaseResolver
     type Types::CategoryType, null: false

@@ -3,6 +3,8 @@
 class ApplicationController < ActionController::Base
   def welcome; end
 
+  def about; end
+
   private
 
   def current_user
