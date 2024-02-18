@@ -10,7 +10,14 @@ class GraphqlController < ApplicationController
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
+
+    api_client_session = ApiClientSession.where(key: request.headers['X-Beer-Authorization']).first
+    Rails.logger.info "API Client Session ID: #{api_client_session&.id}"
+    Rails.logger.info "Logged in as User ID: #{api_client_session&.user&.id}"
+
     context = {
+      current_user: api_client_session&.user,
+      api_client_session_id: api_client_session&.id,
       time: Time.now
     }
     result = BeersSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
