@@ -18,6 +18,32 @@ module Types
       ids.map { |id| context.schema.object_from_id(id, context) }
     end
 
+    # Authentication
+
+    field :login, String, null: true, description: "Login a user" do
+      argument :email, String, required: true
+      argument :password, String, required: true
+    end
+
+    def login(email:, password:)
+      if user = User.where(email: email).first&.authenticate(password)
+        user.api_client_sessions.create.key
+      end
+    end
+
+    field :current_user, Types::UserType, null: true, description: "The currently authenticated user"
+
+    def current_user
+      context[:current_user]
+    end
+
+    field :logout, Boolean, null: true, description: "Logout the current user"
+
+    def logout
+      ApiClientSession.where(id: context[:api_client_session_id]).destroy_all
+      true
+    end
+
     field :category, Types::CategoryType, null: true do
       description "Find a category by ID"
       argument :id, ID, required: true
@@ -25,6 +51,15 @@ module Types
 
     def category(id:)
       Category.where(id: id).first
+    end
+
+    field :categories, [Types::CategoryType], null: true do
+      description "Query categories"
+      argument :first, Int, required: true
+    end
+
+    def categories(first:)
+      Category.first(first)
     end
 
     field :style, Types::StyleType, null: true do

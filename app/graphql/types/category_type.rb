@@ -6,4 +6,8 @@ class Types::CategoryType < Types::BaseObject
   field :styles, [Types::StyleType], null: true
   field :created_at, GraphQL::Types::ISO8601DateTime, null: false
   field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+
+  def self.authorized?(object, context)
+    context[:current_user]
+  end
 end

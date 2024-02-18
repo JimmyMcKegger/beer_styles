@@ -3,6 +3,7 @@ class Types::StyleType < Types::BaseObject
   field :id, ID, null: false
   field :name, String, null: false
   field :category, Types::CategoryType, null: true
+  field :bjcp_category, String, null: true
   field :description, String, null: true
   field :overall_impression, String, null: true
   field :aroma, String, null: true
@@ -16,4 +17,9 @@ class Types::StyleType < Types::BaseObject
   field :tags, String, null: true
   field :created_at, GraphQL::Types::ISO8601DateTime, null: false
   field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+
+
+  def self.authorized?(object, context)
+    context[:current_user]
+  end
 end
