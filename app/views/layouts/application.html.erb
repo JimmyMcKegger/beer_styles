@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>🍺 Styles</title>
+    <title>Beer Styles</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍺</text></svg>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
- <body class="d-flex flex-column min-vh-100">
+ <body class="body d-flex flex-column min-vh-100" id="<%= 'landing-page' if controller_name == 'application' && action_name == 'welcome' %>">
   <%= render "layouts/header" %>
   <%= render "layouts/flash" %>
 

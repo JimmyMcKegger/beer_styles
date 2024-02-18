@@ -59,6 +59,7 @@ class StylesController < ApplicationController
   def edit; end
 
   def update
+
     if @style.update(style_params)
       flash[:notice] = 'Style updated successfully'
       redirect_to @style
@@ -80,6 +81,23 @@ class StylesController < ApplicationController
   end
 
   def style_params
-    params.require(:style).permit(:name, :description, :fermentation_type, :country)
+    params.require(:style).permit(
+      :name,
+      :description,
+      :fermentation_type,
+      :country,
+      :category_id,
+      :overall_impression,
+      :aroma,
+      :appearance,
+      :flavor,
+      :mouthfeel,
+      :history,
+      :comments,
+      :vital_statistics,
+      :commercial_examples,
+      :tags
+    )
   end
+
 end

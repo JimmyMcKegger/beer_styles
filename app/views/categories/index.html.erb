@@ -1,0 +1,16 @@
+
+<div class="container mt-4">
+  <br>
+  <div class="row">
+    <% @categories.each do |category| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <%= category.name %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
