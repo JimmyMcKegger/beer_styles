@@ -41,11 +41,21 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  def create_api_key
     @user = User.find(params[:id])
-    if @user.destroy
-      session[:user_id] = nil
-      redirect_to root_path, status: :see_other, alert: 'Account successfully deleted'
+    if current_user?(@user) || current_user.admin?
+      @user.api_client_sessions.create.key
+      redirect_to @user, notice: 'API client token generated successfully.'
+    else
+      redirect_to @user, alert: 'You are not authorized to perform this action.'
+    end
+  end
+
+  def destroy_api_token
+    @user = User.find(params[:id])
+    @token_to_delete = ApiClientSession.find_by(user_id: params[:id], key: params[:token])
+    if @token_to_delete.destroy
+      redirect_to @user, status: :see_other, info: 'API Token successfully deleted'
     else
       redirect_to @user, status: :unprocessable_entity, alert: @user.errors.full_messages.join(', ')
     end

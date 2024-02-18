@@ -16,6 +16,20 @@
             <%= link_to "Edit account", edit_user_path(@user), class: "btn btn-primary" %>
             <%= link_to "Delete account", @user, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
           </div>
+          <div class="mt-4">
+          <h3>API Client Tokens</h3>
+          <% @user.api_client_sessions.each_with_index do |acs, index| %>
+            <div class="token-line mb-2" id="token-<%= index %>">
+              <span class="badge bg-secondary">Token <%= index + 1 %>:</span>
+              <span class="token-value d-none" id="token-value-<%= index %>"> <%= acs.key %> </span>
+              <%= button_tag "Show", type: "button", class: "btn btn-info show-token-buttons", data: { index: index } %>
+              <%= link_to "Delete", destroy_user_token_path(@user, acs.key), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+            </div>
+          <% end %>
+          <%= form_with url: create_user_api_key_path, method: :post, class: "d-inline" do |f| %>
+            <%= f.submit "Generate New Token", class: "btn btn-secondary mt-2" %>
+          <% end %>
+        </div>
         <% end %>
       </div>
       <% if current_user?(@user) || current_user_admin? %>
