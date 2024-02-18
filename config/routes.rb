@@ -25,5 +25,10 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
 
-  resources :users
+  resources :users do
+    post 'generate_token'
+  end
+  post '/users/:id/create_api_key', to: 'users#create_api_key', as: 'create_user_api_key'
+  delete '/users/:id/destroy_token/:token', to: 'users#destroy_api_token', as: 'destroy_user_token'
+
 end
