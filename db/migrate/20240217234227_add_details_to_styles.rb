@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDetailsToStyles < ActiveRecord::Migration[7.0]
   def change
     add_column :styles, :overall_impression, :text

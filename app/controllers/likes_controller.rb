@@ -13,10 +13,7 @@ class LikesController < ApplicationController
     @style = Style.find_by!(slug: params[:style_id])
     @like = current_user.likes.find_by(style_id: @style.id)
 
-    if @like.present?
-      @like.destroy
-    end
-
+    @like.destroy if @like.present?
 
     redirect_to @style
   end

@@ -59,7 +59,6 @@ class StylesController < ApplicationController
   def edit; end
 
   def update
-
     if @style.update(style_params)
       flash[:notice] = 'Style updated successfully'
       redirect_to @style
@@ -99,5 +98,4 @@ class StylesController < ApplicationController
       :tags
     )
   end
-
 end

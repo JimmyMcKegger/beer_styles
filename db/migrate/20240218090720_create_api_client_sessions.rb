@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateApiClientSessions < ActiveRecord::Migration[7.0]
   def change
     create_table :api_client_sessions do |t|

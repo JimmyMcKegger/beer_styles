@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-  end
-  post "/graphql", to: "graphql#execute"
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
+  post '/graphql', to: 'graphql#execute'
   root 'application#welcome'
+  get 'about', to: 'application#about'
 
   resources :categories
 
@@ -30,5 +29,4 @@ Rails.application.routes.draw do
   end
   post '/users/:id/create_api_key', to: 'users#create_api_key', as: 'create_user_api_key'
   delete '/users/:id/destroy_token/:token', to: 'users#destroy_api_token', as: 'destroy_user_token'
-
 end
