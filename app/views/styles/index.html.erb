@@ -31,7 +31,7 @@
                 <span class="badge bg-info"><%= style.country %></span>
               <% end %>
             </div>
-            <p class="card-text"><%= truncate(style.description, length: 100, separator: ' ') %></p>
+            <p class="card-text"><%= truncate(style.overall_impression, length: 100, separator: ' ') %></p>
           </div>
           <div class="card-footer d-flex justify-content-center">
             <%= link_to 'View Style', style_path(style), class: "btn btn-primary" %>

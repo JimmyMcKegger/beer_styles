@@ -48,7 +48,7 @@ class Style < ApplicationRecord
   end
 
   def self.uncategorised
-    where(bjcp_category: nil).or(where(country: nil)).or(where(description: nil)).or(where(description: ''))
+    where(bjcp_category: nil).or(where(overall_impression: nil)).or(where(overall_impression: ''))
   end
 
   private

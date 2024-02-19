@@ -11,11 +11,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
- <body class="body d-flex flex-column min-vh-100" id="<%= 'landing-page' if controller_name == 'application' && action_name == 'welcome' %>">
+ <body class="body d-flex flex-column min-vh-100" id="<%= 'landing-page' if controller_name == 'application' %>">
   <%= render "layouts/header" %>
   <%= render "layouts/flash" %>
 
-  <% if controller_name == 'application' && action_name == 'welcome' %>
+  <% if controller_name == 'application' %>
     <%= yield %>
   <% else %>
     <div class="container">
