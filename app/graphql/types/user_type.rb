@@ -4,7 +4,8 @@ module Types
   class UserType < Types::BaseObject
     description 'A user of the application'
     field :id, ID, null: true
-    field :email, String, null: true
+    field :name, String, null: false
+    field :email, String, null: false
     field :liked_styles, [Types::StyleType], null: true
     field :active_sessions, Integer, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: true

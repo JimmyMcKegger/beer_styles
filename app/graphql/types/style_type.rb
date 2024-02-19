@@ -2,6 +2,8 @@
 
 module Types
   class StyleType < Types::BaseObject
+    implements GraphQL::Types::Relay::Node
+
     description 'A style of beer'
     field :id, ID, null: false
     field :name, String, null: false

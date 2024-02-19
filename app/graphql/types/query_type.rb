@@ -54,14 +54,12 @@ module Types
       Category.where(id:).first
     end
 
-    field :categories, [Types::CategoryType], null: true do
-      description 'Query categories'
-      argument :first, Int, required: true
+    field :categories, Types::CategoryType.connection_type, null: false
+
+    def categories(**args)
+      Category.all
     end
 
-    def categories(first:)
-      Category.first(first)
-    end
 
     field :style, Types::StyleType, null: true do
       description 'Find a style by ID'
