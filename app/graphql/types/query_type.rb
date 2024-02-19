@@ -56,10 +56,9 @@ module Types
 
     field :categories, Types::CategoryType.connection_type, null: false
 
-    def categories(**args)
+    def categories(**_args)
       Category.all
     end
-
 
     field :style, Types::StyleType, null: true do
       description 'Find a style by ID'
@@ -68,6 +67,15 @@ module Types
 
     def style(id:)
       Style.where(id:).first
+    end
+
+    field :stylesByTag, Types::StyleType.connection_type, null: true do
+      description 'Find styles by tag'
+      argument :tag, String, required: true
+    end
+
+    def stylesByTag(tag:, **args)
+      Style.where('tags LIKE ?', "%#{tag}%")
     end
   end
 end

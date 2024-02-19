@@ -19,9 +19,13 @@ module Types
     field :comments, String, null: true
     field :vital_statistics, String, null: true
     field :commercial_examples, String, null: true
-    field :tags, String, null: true
+    field :tags, [String], null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+
+    def tags
+      object.tags.split(',').map(&:strip)
+    end
 
     def self.authorized?(_object, context)
       context[:current_user]

@@ -10,7 +10,7 @@ module Types
     field :description, String, null: false
     field :styles, Types::StyleType.connection_type, null: false
 
-    def styles(**args)
+    def styles(**_args)
       Style.all
     end
 

@@ -56,7 +56,7 @@ gem 'graphql'
 
 gem 'mini_racer'
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
+gem 'dockerfile-rails', '>= 1.6', group: :development
 
 group :production do
   gem 'pg'
@@ -71,9 +71,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'awesome_print'
+  gem 'graphiql-rails'
   gem 'pry-rails'
   gem 'web-console'
-  gem 'graphiql-rails'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
