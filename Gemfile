@@ -13,10 +13,6 @@ gem 'sprockets-rails'
 
 gem 'seed_dump'
 
-group :development, :test do
-  gem 'sqlite3', '~> 1.4'
-end
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
@@ -58,9 +54,18 @@ gem 'jquery-rails'
 
 gem 'graphql'
 
+gem 'mini_racer'
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
@@ -68,6 +73,7 @@ group :development do
   gem 'awesome_print'
   gem 'pry-rails'
   gem 'web-console'
+  gem 'graphiql-rails'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -80,4 +86,3 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
-gem 'graphiql-rails', group: :development

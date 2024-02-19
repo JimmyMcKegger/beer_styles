@@ -2,11 +2,18 @@
 
 module Types
   class CategoryType < Types::BaseObject
+    implements GraphQL::Types::Relay::Node
+
     description 'A category of beer styles'
     field :id, ID, null: false
     field :name, String, null: false
     field :description, String, null: false
-    field :styles, [Types::StyleType], null: true
+    field :styles, Types::StyleType.connection_type, null: false
+
+    def styles(**args)
+      Style.all
+    end
+
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 

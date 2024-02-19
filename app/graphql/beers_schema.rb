@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 class BeersSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
-
+  default_page_size 50
   # For batch-loading (see https://graphql-ruby.org/dataloader/overview.html)
   use GraphQL::Dataloader
 

@@ -83,6 +83,7 @@ class StylesController < ApplicationController
     params.require(:style).permit(
       :name,
       :description,
+      :bjcp_category,
       :fermentation_type,
       :country,
       :category_id,
