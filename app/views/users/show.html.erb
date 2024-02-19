@@ -31,6 +31,19 @@
           <% end %>
         </div>
         <% end %>
+        <br>
+
+        <div class="api-usage-instructions">
+          <h3>Using Your API Credentials</h3>
+          <p>To authenticate with the API, include your API token in a `X-Beer-Authorization` request header.</p>
+          <p>For example, to retreive a list of the first 3 categories: </p>
+          <code>
+            curl 'https://beers.fly.dev/graphql' \
+            --header 'X-Beer-Authorization: <API_TOKEN>' \
+            --header 'Content-Type: application/json' \
+            --data '{"query":"query firstThree($num:Int!){\n  categories(first: $num){\n    nodes{\n      id\n      name\n    }\n    pageInfo{\n      hasNextPage\n      endCursor\n    }\n  }\n}","variables":{"num":3}}'
+          </code>
+        </div>
       </div>
       <% if current_user?(@user) || current_user_admin? %>
         <div class="col-md-4 sidebar-custom">
