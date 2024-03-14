@@ -60,6 +60,12 @@ module Types
       Category.all
     end
 
+    field :styles, Types::StyleType.connection_type, null: false
+
+    def styles(**_args)
+      Style.all
+    end
+
     field :style, Types::StyleType, null: true do
       description 'Find a style by ID'
       argument :id, ID, required: true
